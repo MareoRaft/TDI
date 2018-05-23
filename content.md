@@ -11,10 +11,10 @@ For example, our population could be men in Bolivia.  The value we are measuring
 
 ## So what is t?
 
-The `t` in a t-test is a measure of ERROR!  In particular, assuming that our predicted mean u is correct, it measures how bad our sample mean X is.
+The $t$ in a t-test is a measure of ERROR!  In particular, assuming that our predicted mean u is correct, it measures how bad our sample mean X is.
 
 
-{\displaystyle t={\left({\bar {X}}-\mu \right)\left/\left({\frac {\sigma }{\sqrt {n}}}\right)\right.}}
+$\displaystyle t=\left({\bar {X}}-\mu \right)\left/\left({\frac {\sigma }{\sqrt {n}}}\right)\right$
 
 
 u is the predicted mean.  X is the sampled mean, s is the sampled standard deviation, and n is the number of data points sampled.
