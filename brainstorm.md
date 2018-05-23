@@ -20,6 +20,9 @@ Be prepared to give a short mock “lecture” (30 minutes) about these two topi
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
+see "One-sample $t$-test" under "Calculations" in wiki
+
+
 
 RESOURCES:
 https://www.statwing.com/demos/logistic-regression#workspaces/39258
