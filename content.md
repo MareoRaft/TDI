@@ -126,7 +126,7 @@ First we need to introduce some vocabulary.  In the posterior equation
 
 $\displaystyle p(T \mid X) = \frac{p(X \mid T) \cdot p(T)}{p(X)}$,
 
-$p(T) is called the *prior* distribution, $p(X \mid T)$ is called the *likelihood*, and the left-hand-side $p(T \mid X)$ is called the *posterior* distribution.
+$p(T)$ is called the *prior* distribution, $p(X \mid T)$ is called the *likelihood*, and the left-hand-side $p(T \mid X)$ is called the *posterior* distribution.
 
 We are often in a situation where we know the distributions on the right-hand-side of the equation, but it is still hard to multiply them and get a nice posterior distribution.
 
@@ -136,12 +136,11 @@ Definition: A family F of prior distributions is called *conjugate* to a likelih
 
 Here is a table of useful conjugate priors:
 
-likelihood conj Prior
---------------------
-Bernouilli conj Beta
-Binomial conj Beta
-Beta conj Beta
-Normal conj Normal (for the mean)
+"likelihood" conjugate to "prior"...
+Bernouilli conjugate to Beta
+Binomial conjugate to Beta
+Beta conjugate to Beta
+Normal conjugate to Normal (for the mean)
 
 
 
@@ -150,42 +149,48 @@ Normal conj Normal (for the mean)
 Here is some code that does posterior sampling.
 
 ~~~
-# pretend we have a population of 100 people, and each person has a height.  The heights are normally distributed with mean MEAN = 67 inches.  But WE THINK that the mean is actually m_guess = 63.  Then we draw a sample X of 10 people from the population.  Finally, we use the sample X to calculate the posterior distribution of people's heights.
+#!/usr/bin/env python3
+# pretend we have a population of 100 people, and each person has a height.  The heights are normally distributed with mean MEAN_ACTUAL = 67 inches.  But WE THINK that the mean is m_guess = 63.  Then we draw a sample X of 10 people from the population.  Finally, we use the sample X to calculate the posterior distribution of people's heights.
 
 import numpy as np
 import scipy as sp
 
 # GLOBALS
+MEAN_ACTUAL = 67
+STD_DEV_ACTUAL = 4
 # p(T)
-MEAN = 67
-STD_DEV = 4
+MEAN_GUESS = 63
+STD_DEV_GUESS = 4
 # other
 NUM_PEOPLE = 100
 NUM_SAMPLES = 10
 
 # actual distribution
-samples = np.random.normal(loc=MEAN, scale=STD_DEV, size=NUM_SAMPLES)
+samples = np.random.normal(loc=MEAN_ACTUAL, scale=STD_DEV_ACTUAL, size=NUM_SAMPLES)
 
 # p(T | X) = p(X | T) * p(T) / p(X)
 
 
 # p(X)
-sample_mean = np.mean(samples)
-sample_std_dev = np.std(samples)
+mean_sample = np.mean(samples)
+std_dev_sample = np.std(samples)
 
 # p(X | T) = prod_j p(x_j | T)
 
 # p(T | X) must be normal, since likelihood and prior distribution are normal.  Therefore, we need only find the mean and standard deviation.
 # new mean is weighted average of old means
-new_mean = (MEAN * (NUM_PEOPLE - NUM_SAMPLES) + sample_mean * NUM_SAMPLES) / NUM_PEOPLE
+new_mean = (MEAN_GUESS * (NUM_PEOPLE - NUM_SAMPLES) + mean_sample * NUM_SAMPLES) / NUM_PEOPLE
 # new variance is the weighted average of the variances
-new_variance = (STD_DEV**2 * (NUM_PEOPLE - NUM_SAMPLES) + sample_std_dev**2 * NUM_SAMPLES) / NUM_PEOPLE
+new_variance = (STD_DEV_GUESS**2 * (NUM_PEOPLE - NUM_SAMPLES) + std_dev_sample**2 * NUM_SAMPLES) / NUM_PEOPLE
 new_std_dev = np.sqrt(new_variance)
+print('new_mean = {}'.format(new_mean))
+print('new_std_dev = {}'.format(new_std_dev))
 
 # By identifying the mean and standard deviation of p(T | X), we have successfully identified p(T | X).
 p_T_X = lambda x: sp.stats.norm.pdf(x, loc=new_mean, scale=new_std_dev)
 ~~~
 
+What should happen is that the new predicted mean is now a little closer to 67 than before.
 
 
 
