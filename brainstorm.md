@@ -10,7 +10,7 @@ Bayesian posterior inference: Explain Bayes’ Rule.  Write some code to actuall
 
 -------------------------------------------------------------------------------------
 
-
+If X1 and X2 are your two normal distributions, define X3 as the average of X1 and X2: X3=(X1+X2)/2. X3 will follow a normal distribution with mean (m1+m2)/2 and variance (s21+s22)/4. For 
 
 
 
