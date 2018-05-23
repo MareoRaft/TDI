@@ -87,7 +87,7 @@ $\displaystyle p(A \mid B)$
 
 is the probability that $A$ occurs if we already know that $B$ occurs.  In other words, the probability of "$A$ given $B$".  Bayes rule is an equation involving these concepts, which we will soon derive.  One way to calculate the probability that $A$ and $B$ both occur is to take the probability that $A$ occurs, and now that we've chosen $A$ to occur, multiply by the probability that $B$ occurs given $A$ is already occuring:
 
-$\displaystyle p(A , B) = p(A) \cdot p(B \mid A)$
+$\displaystyle p(A , B) =  p(B \mid A) \cdot p(A)$
 
 Switching the roles of $B$ and $A$, we also have
 
@@ -108,19 +108,46 @@ This final equation is known as Bayes' Rule.
 
 Firstly, what is the 'posterior distribution'?
 
-Let $t$ represent some information about our population, say, the mean height.
+Let $T$ represent some information about our population, say, the mean height.
 
-We have an initial *predicted* distribution $p(t)$, and then we draw some sample data $X$ from our population.  The idea of 'posterior' is to get better preditions about our population *after* (hence, 'post') having seen some sample data $X$ from it.  We use Bayes formula:
+We have an initial *predicted* distribution $p(T)$, and then we draw some sample data $X$ from our population.  The idea of 'posterior' is to get better preditions about our population *after* (hence, 'post') having seen some sample data $X$ from it.  We use Bayes formula:
 
-$\displaystyle p(t \mid X) = \frac{p(t) \cdot p(X \mid t)}{p(X)}$
+$\displaystyle P(T \mid X) = \frac{P(T) \cdot P(X \mid T)}{P(X)}$
 
 which is not only true for probabilities, but for probability density functions / distributions:
 
-$\displaystyle p(t \mid X) = \frac{p(t) \cdot p(X \mid t)}{p(X)}$
+$\displaystyle p(T \mid X) = \frac{p(T) \cdot p(X \mid T)}{p(X)}$
 
-Here, $p(t \mid X)$ represents is the 'posterior distribution', which is the new best guess of the distribution of our population, thanks to the information $X$.  As you can see $p(t \mid X)$ takes into account the original predicted distribution $p(t)$ as well as information about $X$.
+Here, $p(T \mid X)$ represents is the 'posterior distribution', which is the new best guess of the distribution of $T$, thanks to the information $X$.  As you can see $p(T \mid X)$ takes into account the original predicted distribution $p(T)$ as well as information about $X$.
+
+## What is a 'conjugate' prior?
+
+First we need to introduce some vocabulary.  In the posterior equation
+
+$\displaystyle p(T \mid X) = \frac{p(X \mid T) \cdot p(T)}{p(X)}$,
+
+$p(T) is called the *prior* distribution, $p(X \mid T)$ is called the *likelihood*, and the left-hand-side $p(T \mid X)$ is called the *posterior* distribution.
+
+We are often in a situation where we know the distributions on the right-hand-side of the equation, but it is still hard to multiply them and get a nice posterior distribution.
+
+This is where a 'conjugate' prior is so helpful!  It turns out that if the prior distribution is conjugate to the likelihood, then the posterior distribution will be very similar to the prior distribution, thus making our lives easy!
+
+Definition: A family F of prior distributions is called *conjugate* to a likelihood distribution if the resulting posterior distribution is in F.
+
+Here is a table of useful conjugate priors:
+
+likelihood conj Prior
+--------------------
+Bernouilli conj Beta
+Binomial conj Beta
+Beta conj Beta
+Normal conj Normal (for the mean)
 
 
+
+## An example of posterior sampling.
+
+Here is some code that does posterior sampling.
 
 
 
@@ -138,3 +165,6 @@ https://en.wikipedia.org/wiki/Student%27s_t-distribution
 https://en.wikipedia.org/wiki/p-value
 http://www.averageheight.co/average-male-height-by-country
 https://www.youtube.com/watch?v=EHqU9LE9tg8
+https://www.youtube.com/watch?v=zXNB2vzKKIQ
+https://en.wikipedia.org/wiki/Gibbs_sampling
+https://en.wikipedia.org/wiki/Sampling_(statistics)
