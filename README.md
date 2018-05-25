@@ -7,5 +7,5 @@ You can view the tutorial by viewing the [content.ipynb](https://github.com/Mare
 
 ## To view *locally*
 
-    notedown content.md > content.ipynb && jupyter nbconvert --execute content.ipynb && open content.html
+    notedown content.md --run > content.ipynb && jupyter nbconvert --execute content.ipynb && open content.html
 
