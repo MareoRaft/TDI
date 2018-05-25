@@ -197,14 +197,14 @@ What should happen is that the new predicted mean is now a little closer to 67 t
 
 Resources Used in the making of this tutorial
 -----------------------------------------------
-https://en.wikipedia.org/wiki/Student%27s_t-test
-https://en.wikipedia.org/wiki/Bayes%27_theorem
-http://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf
-https://en.wikipedia.org/wiki/Student%27s_t-distribution
-https://en.wikipedia.org/wiki/p-value
-http://www.averageheight.co/average-male-height-by-country
-https://www.youtube.com/watch?v=EHqU9LE9tg8
-https://www.youtube.com/watch?v=zXNB2vzKKIQ
-https://en.wikipedia.org/wiki/Gibbs_sampling
-https://en.wikipedia.org/wiki/Sampling_(statistics)
-http://pballew.net/combdis.htm
+  * [Wikipedia: Student's t-test](https://en.wikipedia.org/wiki/Student%27s_t-test)
+  * [Wikipedia: t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution)
+  * [Wikipedia: p-value](https://en.wikipedia.org/wiki/p-value)
+  * [sjsu.edu: t-table](http://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf)
+  * [Wikipedia: Bayes theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem)
+  * [YouTube: Bayesian posterior sampling](https://www.youtube.com/watch?v=EHqU9LE9tg8)
+  * [YouTube: Conjugate priors](https://www.youtube.com/watch?v=zXNB2vzKKIQ)
+  * [pballew.net: Combining distributions](http://pballew.net/combdis.htm)
+  * [Wikipedia: Sampling](https://en.wikipedia.org/wiki/Sampling_(statistics)
+  * [Wikipedia: Gibbs sampling](https://en.wikipedia.org/wiki/Gibbs_sampling)
+  * [averageheight.co: data](http://www.averageheight.co/average-male-height-by-country)
